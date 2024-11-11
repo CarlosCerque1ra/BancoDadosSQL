@@ -7,10 +7,7 @@ Este guia será dividido em etapas para demonstrar desde a criação de tabelas,
 *__CREATE__ para criar 'Banco de dados' ou 'Tabelas'
 *__ALTER__ para adicionar ou modificar colunas
 *__DROP__ para remover 'Banco de dados' ou 'Tabelas'
-*__INSERT__ para adicionar registros na tabela
-*__UPDATE__ para atualizar os registros
-*__PARA__ para remover os registros
-*__SELECT__ para consultar e visualizar dados
+*__INSERT__ para adicionar
 
 ## Passo 1: criação do Banco de Dados e das Tabelas
 #### 1.1 Criando o DB
@@ -42,9 +39,39 @@ CREATE TABLE autor(
 ```
 CREATE TABLE assunto(
     id_assunto INT PRIMARY KEY  AUTO_INCREMENT,
-    descricap_assunto VARCHAR(300) NOT NULL,
-    data_nascimento DATE
+    descricaio_assunto VARCHAR(500) NOT NULL,
 );
 ```
 
-####
+#### 1.5 Crindo a tabela 'livro'
+```
+CREATE TABLE livro(
+    id_livro int PRIMARY KEY AUTO_INCREMENT,
+    titulo VARCHAR(150) NOT NULL,
+    ano_publicacao YEAR,
+    FOREING KEY(id_editora)
+);
+```
+
+#### 1.6 Criando uma tabela EXTRA
+A tabela vai servir para edificar a exclusão
+
+```
+CREATE TABLE extr(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    produtos VARCHAR(50) NOT NULL,
+    quantidade INT(20) NOT NULL,
+    preco DOUBLE NOT NULL
+);
+```
+
+## Passo 2: edificar usando 'ALTER'
+Após a criação da tabela, podemos adiconar novos campos. Vamos adicionar uma coluna 'email' na tabela 'altor'
+
+```SQL
+ALTER TABLE autor
+ADD COLUMN email VARCHAR(100);
+```
+
+
+
