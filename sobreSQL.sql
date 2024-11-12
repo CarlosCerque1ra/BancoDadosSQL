@@ -12,7 +12,7 @@ Este guia será dividido em etapas para demonstrar desde a criação de tabelas,
 ## Passo 1: criação do Banco de Dados e das Tabelas
 #### 1.1 Criando o DB
 
-```
+```SQL
 CREATE DATABASE biblioteca;
 USE biblioteca;
 ```
@@ -27,7 +27,7 @@ CREATE TABLE editora(
 ```
 
 #### 1.3 Criando a tabela 'autor'
-```
+```SQL
 CREATE TABLE autor(
     id_autor INT PRIMARY KEY  AUTO_INCREMENT,
     nome_autor VARCHAR(200),
@@ -36,7 +36,7 @@ CREATE TABLE autor(
 ```
 
 #### 1.4 Criando atabela 'assunto'
-```
+```SQL
 CREATE TABLE assunto(
     id_assunto INT PRIMARY KEY  AUTO_INCREMENT,
     descricaio_assunto VARCHAR(500) NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE assunto(
 ```
 
 #### 1.5 Crindo a tabela 'livro'
-```
+```SQL
 CREATE TABLE livro(
     id_livro int PRIMARY KEY AUTO_INCREMENT,
     titulo VARCHAR(150) NOT NULL,
@@ -61,7 +61,7 @@ CREATE TABLE livro(
 #### 1.6 Criando uma tabela EXTRA
 A tabela vai servir para edificar a exclusão
 
-```
+```SQL
 CREATE TABLE extra(
     id INT PRIMARY KEY AUTO_INCREMENT,
     produtos VARCHAR(50) NOT NULL,
