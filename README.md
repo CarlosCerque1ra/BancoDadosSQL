@@ -48,8 +48,13 @@ CREATE TABLE assunto(
 CREATE TABLE livro(
     id_livro int PRIMARY KEY AUTO_INCREMENT,
     titulo VARCHAR(150) NOT NULL,
+    editora int,
+    autor int,
+    assunto int,
     ano_publicacao YEAR,
-    FOREING KEY(id_editora)
+    FOREIGN KEY(editora) references editora(id_editora),
+	FOREIGN KEY(autor) references autor(id_autor),
+	FOREIGN KEY(assunto) references assunto(id_assunto)
 );
 ```
 
@@ -57,7 +62,7 @@ CREATE TABLE livro(
 A tabela vai servir para edificar a exclusão
 
 ```
-CREATE TABLE extr(
+CREATE TABLE extra(
     id INT PRIMARY KEY AUTO_INCREMENT,
     produtos VARCHAR(50) NOT NULL,
     quantidade INT(20) NOT NULL,
@@ -72,6 +77,47 @@ Após a criação da tabela, podemos adiconar novos campos. Vamos adicionar uma 
 ALTER TABLE autor
 ADD COLUMN email VARCHAR(100);
 ```
+
+## Passo 3: Remover tabela usando 'DROP'
+Se precisar remover uma tabela usamos o comando 'DROP'.
+Neste exemplo vamos remover a tabela 'extra'
+
+```SQL
+DROP TABLE extra;
+```
+
+## Passo 4: Inserindo dados usando 'INSERT'
+Agora que as tabelas ja estão prontas, vamos inserir dados nelas.
+
+### 4.1 Inserindo dados na tabela 'editora'
+```SQL
+INSERT INTO editora(nome_editora, pais)
+VALUES
+('Editora Alfa', 'Brasil'),
+('Editora Beta', 'Portugal'),
+('Editora Bertrand Brasil', 'Brasil');
+```
+
+#### 4.2 Inserindo Dados na tabela 'autor'
+```SQL
+INSERT INTO autor (nome_autor, data_nascimento, email)
+VALUES
+('Jorge Amado', '1912-08-10', 'jorginho@gmail.com')
+('Machado de Assis', '1839-06-21', 'machadinho@gmail.com')
+('Matt Haig', '1975-06-03', 'matt@gmail.com')
+```
+
+#### 4.3 Inserindo dados na tabela 'assunto'
+```SQL
+INSERT INTO assunto (descricao_assunto)
+VALUES
+('Ficção')
+('Mistério')
+('Terror')
+('Ação')
+
+```
+
 
 
 
