@@ -18,7 +18,7 @@ USE biblioteca;
 ```
 
 ### 1.2 Criando a tabela 'editora'
-```
+```SQL
 CREATE TABLE editora(
     id_editora INT PRIMARY KEY  AUTO_INCREMENT,
     nome_editora VARCHAR(100) NOT NULL,
