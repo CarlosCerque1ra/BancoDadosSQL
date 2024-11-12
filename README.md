@@ -102,21 +102,83 @@ VALUES
 ```SQL
 INSERT INTO autor (nome_autor, data_nascimento, email)
 VALUES
-('Jorge Amado', '1912-08-10', 'jorginho@gmail.com')
-('Machado de Assis', '1839-06-21', 'machadinho@gmail.com')
-('Matt Haig', '1975-06-03', 'matt@gmail.com')
+('Jorge Amado', '1912-08-10', 'jorginho@gmail.com'),
+('Machado de Assis', '1839-06-21', 'machadinho@gmail.com'),
+('Matt Haig', '1975-06-03', 'matt@gmail.com');
 ```
 
 #### 4.3 Inserindo dados na tabela 'assunto'
 ```SQL
 INSERT INTO assunto (descricao_assunto)
 VALUES
-('Ficção')
-('Mistério')
-('Terror')
-('Ação')
-
+('Ficção'),
+('Mistério'),
+('Terror'),
+('Ação');
 ```
+
+#### 4.4 Inserindo dados na tabela 'livros'
+```SQL
+INSERT INSERT livro(titulo, ano_publicacao, editora, autor, assunto)
+VALUES
+('Capitães de area', '1937', 1, 1, 5),
+('Dom Casmurro', '1899', 2, 2, 5),
+('A biblioteca da meia noite', '2020', 3, 3, 2),
+('Memóras Póstumas de Brascubas', '1881', 1, 2, 5);
+```
+
+## Passo 5: Atualizando os dados usando 'UPDATE'
+Podemos atualizar os dados com o comando UPDATE.
+Vamos corrigir a data de publicação do livro 'Capitães de Areia'
+
+```SQL
+UPDATE livro
+SET ano_publicacao = 1938
+WHERE titulo = 'Capitães de Areia';
+```
+
+## Passo 6: Excluindo os dados usando 'DELETE'
+Para remover os registros de uma tabela usamos o comando 'DELETE'.
+Vamos excluir o livro 'Memórias Póstumas de Brás Cubas'.
+```SQL
+DELETE FROM livro
+WHERE id_livro = 4;
+```
+
+## Passo 7: Consultando os dados usando 'SELECT'
+É possível selecionar os dados para visualizar na forma como quiser.
+Para isso usamos o comando 'SELECT'
+
+#### Passo 7.1: Selecionar todos os livros com suas editoras e autores
+Vamos usar dados das tabelas 'livros', 'editora', 'autor' e 'assunto' usando o comando 'JOIN'
+```SQL
+SELECT  livro.titulo AS nome, 
+        editora.nome_editora AS editora,
+        autor.nome_autor AS autor,
+        assunto.descricao_assunto AS assunto,
+        livro.ano_publicacao AS ano
+FROM livro
+JOIN editora ON livro.editora = editora.id_editora
+JOIN autor ON livro.autor =  autor.id_autor
+JOIN assunto ON livro.assunto = assunto.id_assunto
+```
+
+#### Passo 7.2: Selecionar todos os livros com o mesmo tema
+Para selecionar todos os livros que pertencem ao mesmo assunto, podemos fazer uma consulta utilizando o comando 
+'SELECT' com uma condição 'WHERE' especificando o que quer visualizar
+
+```SQL
+SELECT  livro.titulo AS nome, 
+        assunto.descricao_assunto AS assunto
+FROM livro
+JOIN assunto ON livro.assunto = assunto.id_assunto
+WHERE assunto.id_assunto = 5
+```
+
+
+
+
+
 
 
 
